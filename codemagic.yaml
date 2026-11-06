@@ -23,6 +23,8 @@ workflows:
         script: |
           set -e
           cd app && npm install
+          [ -f node_modules/@supabase/supabase-js/dist/umd/supabase.js ] || { echo "ERREUR : supabase.js introuvable apres npm install"; exit 1; }
+          cp node_modules/@supabase/supabase-js/dist/umd/supabase.js www/supabase.js
       - name: Creer le projet Android
         script: |
           set -e
